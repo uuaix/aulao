@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import MainDrawer from "./components/MainDrawer";
 import Routes from "./components/Routes";
+import {CamCanvas} from "./components/WebCam";
 
 const drawerWidth = 300;
 
@@ -76,6 +77,7 @@ function MainStructure() {
     return (
         <div className={classes.root}>
             <CssBaseline />
+            <CamCanvas />
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {

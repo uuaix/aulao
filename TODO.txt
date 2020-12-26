@@ -1,0 +1,18 @@
+timecode
+    post processing script na tag mais externa no onChande(el)
+        javascript puro -> el.getElementByType('h1, h2, h3, h4')
+            whrap?(<div name=(escape(content-of-title[15])> h1 + p</div>)
+    teclas de controle para proxima secao - inserir timecode na secao atual quando clickada
+
+classesList - só o nome + inicio do .md - usando material Table!!!
+
+presentation Pen
+    canvas da camera ocupando 100% da tela ---
+    limite de cor para os pixels da matriz (só passa alta) ----
+    inverter para que o ponto da lanterna fique preto. ---
+
+    ESPELHAR CAMERA
+
+WEBCAM ESPELHADA !!!
+
+problema na edicao de texto!!!! (naop ta inserindo caracteres)  <----- scriptEditor

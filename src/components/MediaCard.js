@@ -9,25 +9,13 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CardMedia from '@material-ui/core/CardMedia';
 
-import {WebCam, CamCanvas} from "../components/WebCam";
-
-import profile_info from '../data/firstclass/profile.json';
-import profile_pic from '../data/firstclass/profile.png'
-
-const data = {
-    title: "Shrimp and Chorizo Paella",
-    avatar: "R",
-    subheader: "September 14, 2016",
-    options: ["a", "b"],
-    description: 'This impressive paella is a perfect party dish and a fun meal to cook together with your\n' +
-    '                    guests. Add 1 cup of frozen peas along with the mussels, if you like.',
-}
+const api = 'http://localhost:5000/';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,11 +40,19 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
 export default function MediaCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
+    const [info, setInfo] = useState({});
+
+    useEffect(()=>{
+        fetch(props.jsonpath)
+            .then(response => response.json())
+            .then(data => {
+                setInfo(data);
+                console.log(data)
+            });
+    }, []);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -67,7 +63,7 @@ export default function MediaCard(props) {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        {profile_info[0].avatar}
+                        {info.avatar}
                     </Avatar>
                 }
                 action={
@@ -75,15 +71,18 @@ export default function MediaCard(props) {
                         <MoreVertIcon />
                     </IconButton>
                 }
-                title={profile_info[0].title}
-                subheader={profile_info[0].subheader}
+                title={info.title}
+                subheader={info.subheader}
+            />
+            <CardMedia
+                className={classes.media}
+                image={props.media}
+                title="Paella dish"
             />
             <CardContent>
-                <WebCam />
-                <CamCanvas />
                 {/*<Photo />*/}
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {profile_info[0].description}
+                    {info.description}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>

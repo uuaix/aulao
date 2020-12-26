@@ -12,6 +12,7 @@ import Drawer from "@material-ui/core/Drawer";
 import React from "react";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import {Link} from "react-router-dom";
+import Login from "../pages/Login";
 
 const drawerWidth = 300;
 
@@ -68,9 +69,13 @@ export default function MainDrawer(props) {
         </div>
         <Divider />
         <List>
-            <ListItem button key='Home' component={Link} to="/">
+            <ListItem button key='Login' component={Link} to="/login">
                 <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary='Home' />
+                <ListItemText primary='Login' />
+            </ListItem>
+            <ListItem button key='ListClasses' component={Link} to="/">
+                <ListItemIcon><InboxIcon /></ListItemIcon>
+                <ListItemText primary='Lectures' />
             </ListItem>
             <ListItem button key='Presentation' component={Link} to="/present">
                 <ListItemIcon><InboxIcon /></ListItemIcon>
